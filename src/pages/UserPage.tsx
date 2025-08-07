@@ -3,10 +3,14 @@ import GenericTable from "../components/Table/Table";
 import type { User } from "../types/User";
 import { fetchUsers } from "../services/userService";
 import SearchBar from "../components/Table/SearchBar";
+import TablePagination from "../components/Table/Pagination";
+
+const rowPerPage = 10;
 
 function UserPage() {
   const [data, setData] = useState<User[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("")
 
   async function loadUser() {
@@ -15,18 +19,20 @@ function UserPage() {
     setData(data);
   }
 
-  //filter users
-  // function filterUsers():User{
 
-  //    users.filter(user => 
-  //   const query = searchQuery.toLowerCase();
-  //   return (
-  //     user.name.toLowerCase().includes(query) ||
-  //     user.email.toLowerCase().includes(query) ||
-  //     user.role.toLowerCase().includes(query)
-  //   );
-  // );
-  // }
+//filter user
+  const query = searchQuery.toLowerCase();
+      const filteredUsers = users.filter(user => 
+     (
+      user.name.toLowerCase().includes(query) ||
+      user.email.toLowerCase().includes(query) ||
+      user.role.toLowerCase().includes(query)
+    )
+  )
+  const totalPage=Math.ceil(filteredUsers.length/rowPerPage)
+  const startIndex=(currentPage-1)*rowPerPage
+  const currentUser=filteredUsers.slice(startIndex,startIndex+rowPerPage)
+
 
   useEffect(() => {
     loadUser();
@@ -36,7 +42,8 @@ function UserPage() {
   return (
     <div className="container mt-4" style={{ width: "100%" }}>
       <SearchBar query={searchQuery} setQuery={setSearchQuery}/>
-      <GenericTable users={users} />
+      <GenericTable users={currentUser} />
+      <TablePagination currentPage={currentPage} totalPages={totalPage} setCurrentPage={setCurrentPage}/>
     </div>
   );
 }
