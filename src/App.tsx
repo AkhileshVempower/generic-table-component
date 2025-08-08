@@ -1,10 +1,10 @@
 import './App.css'
-import UserPage from './pages/UserPage'
+import UserTable from './pages/UserTable'
 
 function App() {
 
   return (
-    <UserPage/>
+    <UserTable/>
   )
 }
 
