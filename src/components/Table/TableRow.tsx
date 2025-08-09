@@ -7,6 +7,8 @@ type TableRowProp = {
   onEdit: (id: string, updated: User) => void;
   editingId: string | null;
   setEditingId: (id: string | null) => void;
+  onSelect: (id: string) => void;
+  selectedIds: boolean;
 };
 
 function TableRow({
@@ -15,6 +17,8 @@ function TableRow({
   onEdit,
   editingId,
   setEditingId,
+  selectedIds,
+  onSelect
 }: TableRowProp) {
   const [editData, setEditData] = useState<User>(user);
 
@@ -22,18 +26,17 @@ function TableRow({
     const { name, value } = e.target;
     setEditData((prev) => ({ ...prev, [name]: value }));
   };
-useEffect(() => {
-  if (user.id === editingId) {
-    setEditData(user);
-  }
-}, [editingId, user]);
-
-
+  useEffect(() => {
+    if (user.id === editingId) {
+      setEditData(user);
+    }
+  }, [editingId, user]);
+console.log(selectedIds)
   return (
     <tr key={user.id}>
       <td>
         {" "}
-        <input type="checkbox" className="bg-transparent" />
+        <input type="checkbox" className="bg-transparent" checked={selectedIds} onChange={()=>onSelect(user.id)}/>
       </td>
       {user.id == editingId ? (
         <>
@@ -83,7 +86,6 @@ useEffect(() => {
         </>
       ) : (
         <>
-       
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
