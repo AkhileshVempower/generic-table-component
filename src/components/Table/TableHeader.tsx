@@ -1,9 +1,17 @@
-function TableHeader() {
+type TableHeaderProp = {
+  handleSelectAll: () => void;
+  isAllSelected: boolean;
+};
+function TableHeader({ handleSelectAll, isAllSelected }: TableHeaderProp) {
   return (
     <thead>
       <tr>
         <th scope="col">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={handleSelectAll}
+            checked={isAllSelected}
+          />
         </th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
