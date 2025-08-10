@@ -26,8 +26,9 @@ function GenericTable({
   handleSelectAll,
   isAllSelected
 }: GenericTableProps) {
-  return (
-    <Table striped bordered hover>
+  return (<div  className="table-responsive">
+
+    <Table striped bordered hover className="table-responsive">
       <TableHeader handleSelectAll={handleSelectAll} isAllSelected={isAllSelected}/>
       <tbody>
         {users.map((user) => (
@@ -44,6 +45,7 @@ function GenericTable({
         ))}
       </tbody>
     </Table>
+  </div>
   );
 }
 

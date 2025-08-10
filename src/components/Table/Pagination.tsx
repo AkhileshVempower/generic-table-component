@@ -29,7 +29,7 @@ const TablePagination = ({
   }
 
   return (
-    <Pagination className="mt-3">
+    <Pagination className="mt-3 ">
       <Pagination.First
         onClick={() => setCurrentPage(1)}
         disabled={currentPage === 1}

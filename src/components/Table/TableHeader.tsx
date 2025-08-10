@@ -6,17 +6,17 @@ function TableHeader({ handleSelectAll, isAllSelected }: TableHeaderProp) {
   return (
     <thead>
       <tr>
-        <th scope="col">
+        <th >
           <input
             type="checkbox"
             onChange={handleSelectAll}
             checked={isAllSelected}
           />
         </th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
-        <th scope="col">Action</th>
+        <th >Name</th>
+        <th >Email</th>
+        <th >Role</th>
+        <th >Action</th>
       </tr>
     </thead>
   );

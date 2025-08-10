@@ -35,7 +35,7 @@ console.log(selectedIds)
   return (
     <tr key={user.id}>
       <td>
-        {" "}
+       
         <input type="checkbox" className="bg-transparent" checked={selectedIds} onChange={()=>onSelect(user.id)}/>
       </td>
       {user.id == editingId ? (
@@ -89,10 +89,11 @@ console.log(selectedIds)
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
-          <td className="d-flex justify-content-center gap-3">
+          <td >
             <i
-              className="bi bi-pencil-square text-secondary "
+              className="bi bi-pencil-square text-secondary mx-2"
               onClick={() => setEditingId(user.id)}
+              
             ></i>
             <i
               className="bi bi-trash text-danger"
