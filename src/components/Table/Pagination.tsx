@@ -1,5 +1,4 @@
 import Pagination from "react-bootstrap/Pagination";
-import type { User } from "../../types/User";
 
 
 type TablePaginationProp = {
