@@ -1,7 +1,5 @@
-type TableHeaderProp = {
-  handleSelectAll: () => void;
-  isAllSelected: boolean;
-};
+import type { TableHeaderProp } from "../../types/User";
+
 function TableHeader({ handleSelectAll, isAllSelected }: TableHeaderProp) {
   return (
     <thead>

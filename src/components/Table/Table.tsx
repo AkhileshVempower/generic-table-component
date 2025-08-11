@@ -1,20 +1,7 @@
 import Table from "react-bootstrap/Table";
 import TableHeader from "./TableHeader";
-import type { User } from "../../types/User";
+import type { GenericTableProps} from "../../types/User";
 import TableRow from "./TableRow";
-
-type GenericTableProps = {
-  users: User[];
-  handleDelete: (id: string) => void;
-  onEdit: (id: string, updated: User) => void;
-  editingId: string | null;
-  setEditingId: (id: string | null) => void;
-  onSelect: (id: string) => void;
-  selectedIds: string[];
-  handleSelectAll:()=>void
-  isAllSelected:boolean
-  errorMessage:string
-};
 
 function GenericTable({
   users,

@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { User } from "../../types/User";
-
-type TableRowProp = {
-  user: User;
-  handleDelete: (id: string) => void;
-  onEdit: (id: string, updated: User) => void;
-  editingId: string | null;
-  setEditingId: (id: string | null) => void;
-  onSelect: (id: string) => void;
-  selectedIds: boolean;
-  errorMessage:string
-};
+import type { TableRowProp, User } from "../../types/User";
 
 function TableRow({
   user,
@@ -20,7 +9,6 @@ function TableRow({
   setEditingId,
   selectedIds,
   onSelect,
-  errorMessage
 }: TableRowProp) {
   const [editData, setEditData] = useState<User>(user);
 

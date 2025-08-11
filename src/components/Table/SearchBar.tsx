@@ -1,9 +1,7 @@
 import React from "react";
+import type { Props } from "../../types/User";
 
-interface Props {
-  query: string;
-  setQuery: (val: string) => void;
-}
+
 
 const SearchBar:React.FC<Props> = ({query,setQuery}) => {
   return (

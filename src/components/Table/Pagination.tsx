@@ -1,12 +1,5 @@
 import Pagination from "react-bootstrap/Pagination";
-
-
-type TablePaginationProp = {
-  currentPage: number;
-  totalPages: number;
-  setCurrentPage: (page: number) => void;
-};
-
+import type { TablePaginationProp } from "../../types/User";
 
 const TablePagination = ({
   currentPage,
@@ -34,13 +27,12 @@ const TablePagination = ({
         disabled={currentPage === 1}
       />
       <Pagination.Prev
-        onClick={() => setCurrentPage(currentPage-1)}
+        onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
       />
       {items}
       <Pagination.Next
-               onClick={() => setCurrentPage(currentPage+1)}
-
+        onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPage === totalPages}
       />
       <Pagination.Last
