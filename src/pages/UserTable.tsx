@@ -13,7 +13,8 @@ function UserPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
-
+  console.log('users=>',users)
+//fetch users
   async function loadUser() {
     const data = await fetchUsers();
     setUsers(data);
