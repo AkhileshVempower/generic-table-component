@@ -13,6 +13,7 @@ function UserPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   //fetch users
   async function loadUser() {
     const data = await fetchUsers();
@@ -78,10 +79,23 @@ function UserPage() {
   }
 
   // Edit user handler
-  function handleEdit(id: string, updated: User) {
-    setUsers(users.map((u) => (u.id == id ? updated : u)));
-    setEditingId(null);
+function handleEdit(id: string, updated: User) {
+  const hasEmptyField = !updated.name.trim() || !updated.email.trim() || !updated.role.trim();
+
+  if (hasEmptyField) {
+    setErrorMessage("Fields cannot be empty");
+    return;
   }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(updated.email.trim())) {
+    setErrorMessage("Please enter a valid email address");
+    return;
+  }
+
+  setErrorMessage("");
+  setUsers(users.map((u) => (u.id === id ? updated : u)));
+  setEditingId(null);
+}
   //Bulk delete
   const handleBulkDelete = () => {
     setUsers(users.filter((u) => !selectedIds.includes(u.id)));
@@ -98,6 +112,7 @@ function UserPage() {
   return (
     <div className="container mt-4">
       <SearchBar query={searchQuery} setQuery={setSearchQuery} />
+
       <GenericTable
         users={currentUsers}
         handleDelete={handleDelete}
@@ -108,9 +123,18 @@ function UserPage() {
         selectedIds={selectedIds}
         handleSelectAll={handleSelectAll}
         isAllSelected={isAllSelected}
+        errorMessage={errorMessage}
       />
+      {errorMessage.length && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
       <div className="d-flex justify-content-between ">
-        <DeleteButton handleBulkDelete={handleBulkDelete} selectedIds={selectedIds} />
+        <DeleteButton
+          handleBulkDelete={handleBulkDelete}
+          selectedIds={selectedIds}
+        />
         <TablePagination
           currentPage={currentPage}
           totalPages={totalPage}

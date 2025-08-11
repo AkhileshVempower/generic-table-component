@@ -13,6 +13,7 @@ type GenericTableProps = {
   selectedIds: string[];
   handleSelectAll:()=>void
   isAllSelected:boolean
+  errorMessage:string
 };
 
 function GenericTable({
@@ -24,7 +25,8 @@ function GenericTable({
   onSelect,
   selectedIds,
   handleSelectAll,
-  isAllSelected
+  isAllSelected,
+  errorMessage
 }: GenericTableProps) {
   return (<div  className="table-responsive">
 
@@ -40,6 +42,7 @@ function GenericTable({
             setEditingId={setEditingId}
             onSelect={onSelect}
             selectedIds={selectedIds.includes(user.id)}
+            errorMessage={errorMessage}
             
           />
         ))}

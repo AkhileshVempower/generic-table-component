@@ -9,6 +9,7 @@ type TableRowProp = {
   setEditingId: (id: string | null) => void;
   onSelect: (id: string) => void;
   selectedIds: boolean;
+  errorMessage:string
 };
 
 function TableRow({
@@ -18,7 +19,8 @@ function TableRow({
   editingId,
   setEditingId,
   selectedIds,
-  onSelect
+  onSelect,
+  errorMessage
 }: TableRowProp) {
   const [editData, setEditData] = useState<User>(user);
 
@@ -83,6 +85,7 @@ console.log(selectedIds)
               Cancel
             </button>
           </td>
+       
         </>
       ) : (
         <>
@@ -102,6 +105,7 @@ console.log(selectedIds)
           </td>
         </>
       )}
+      
     </tr>
   );
 }
