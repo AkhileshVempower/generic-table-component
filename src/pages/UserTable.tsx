@@ -13,8 +13,7 @@ function UserPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
-  console.log('users=>',users)
-//fetch users
+  //fetch users
   async function loadUser() {
     const data = await fetchUsers();
     setUsers(data);
@@ -97,7 +96,7 @@ function UserPage() {
   }, [searchQuery]);
 
   return (
-    <div className="container mt-4" >
+    <div className="container mt-4">
       <SearchBar query={searchQuery} setQuery={setSearchQuery} />
       <GenericTable
         users={currentUsers}
@@ -111,7 +110,7 @@ function UserPage() {
         isAllSelected={isAllSelected}
       />
       <div className="d-flex justify-content-between ">
-        <DeleteButton handleBulkDelete={handleBulkDelete} />
+        <DeleteButton handleBulkDelete={handleBulkDelete} selectedIds={selectedIds} />
         <TablePagination
           currentPage={currentPage}
           totalPages={totalPage}
