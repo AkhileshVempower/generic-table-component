@@ -9,6 +9,7 @@ function TableHeader({ handleSelectAll, isAllSelected }: TableHeaderProp) {
             type="checkbox"
             onChange={handleSelectAll}
             checked={isAllSelected}
+            className="table-input"
           />
         </th>
         <th >Name</th>

@@ -21,12 +21,12 @@ function TableRow({
       setEditData(user);
     }
   }, [editingId, user]);
-console.log(selectedIds)
+ 
   return (
     <tr key={user.id}>
       <td>
        
-        <input type="checkbox" className="bg-transparent" checked={selectedIds} onChange={()=>onSelect(user.id)}/>
+        <input type="checkbox" className="table-input bg-transparent cursor-pointer" checked={selectedIds} onChange={()=>onSelect(user.id)}/>
       </td>
       {user.id == editingId ? (
         <>

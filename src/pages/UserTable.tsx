@@ -126,7 +126,7 @@ function handleEdit(id: string, updated: User) {
         errorMessage={errorMessage}
       />
       {errorMessage.length && (
-        <div className="alert alert-danger" role="alert">
+        <div className="alert alert-danger w-25" role="alert">
           {errorMessage}
         </div>
       )}

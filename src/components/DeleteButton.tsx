@@ -5,7 +5,6 @@ type handleBulkDeleteProp = {
 };
 
 function DeleteButton({ handleBulkDelete,selectedIds }: handleBulkDeleteProp) {
-  console.log(selectedIds)
   return (
     <Button
       variant="danger"

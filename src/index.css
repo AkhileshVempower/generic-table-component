@@ -53,6 +53,15 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+:hover.table-input {
+  cursor: pointer !important;
+}
+:hover.btn  {
+  cursor: pointer !important;
+}
+:hover.bi  {
+  cursor: pointer !important;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -67,7 +76,7 @@ button:focus-visible {
   }
 }
 @media (max-width: 576px) {
-*{
+  * {
     font-size: 0.82rem;
   }
 }
