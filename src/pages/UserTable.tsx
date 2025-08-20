@@ -125,11 +125,11 @@ function handleEdit(id: string, updated: User) {
         isAllSelected={isAllSelected}
         errorMessage={errorMessage}
       />
-      {errorMessage.length && (
+      {errorMessage.length ?(
         <div className="alert alert-danger w-25" role="alert">
           {errorMessage}
         </div>
-      )}
+      ):""}
       <div className="d-flex justify-content-between ">
         <DeleteButton
           handleBulkDelete={handleBulkDelete}
